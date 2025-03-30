@@ -41,7 +41,7 @@ for root, dirs, files in os.walk(dir_name):  # , topdown=False
                     os.renames(path_to_f, emp_path)
                     moved_count_emp_f += 1
                 if not isfile(path_to_f) and isfile(emp_path):  # Условие уведомления по факту перемещения пустых файлов
-                    dir_ish = os.path.split(path_to_f)  # Картеж для извлечения исходного местоположения пустого файла
+                    dir_ish = split(path_to_f)  # Картеж для извлечения исходного местоположения пустого файла
                     print(f"Файл '{f}' пустой, перемещён из папки '{dir_ish[0]}' по адр.:",
                           fr"'{dir_name}\empty_files\{f}'.")
 
