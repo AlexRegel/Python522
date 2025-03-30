@@ -3204,7 +3204,7 @@ import re
 # f.close()
 
 # f = open("xyz.txt")
-# print(f.read())
+# print(f.read())  # Полностью читает файл
 
 # print(f.readline())  # Построчно
 # print(f.readline(8))
@@ -3214,6 +3214,7 @@ import re
 # print(f.readlines(26))  # Список из строк
 # print(f.readlines())  # Список из строк
 # f.close()
+# print(f.closed)
 
 # count = 0
 #
@@ -3328,17 +3329,33 @@ import re
 #
 # print("Файл записан")
 
-
+# Здесь было с ошибкой:
+# ----------------------------------------------
 # with open("res.txt") as f:
 #     nums = f.read()
 #
 # print(nums)
-#
-# # lst = list(map(float, nums.split()))
-# # print(lst)
+
+# lst = list(map(float, nums.split(" ")))
+# print(lst)
 # lst = list(map(float, nums.split()))
 # print(lst)
 # print(sum(lst))
+# ----------------------------------------------
+# Выяснили в чём ошибка, вариант без ошибки:
+# ----------------------------------------------
+# with open("res.txt") as f:
+#     nums = f.read()
+#
+# print("Файл прочитан", nums)
+# # nm = nums.split(", ")  # Добавили правильный разделитель: ", "
+# # print("split:", nm)
+#
+# lst = list(map(float, nums.split(", ")))
+# print("lst:", lst)
+# print(type(lst[0]))
+# print("Сумма:", sum(lst))
+# ----------------------------------------------
 
 # file_name = "long.txt"
 #
@@ -3390,7 +3407,7 @@ import re
 # os.rename("file_name.txt", "new_file.txt")
 # os.rename("new_file.txt", "")  # переименовывает файл
 # может перемещать существующую директорию
-# os.renames("two.txt", "test/two.txt") # переименовывает файл,
+# os.renames("two2.txt", "test/two2.txt") # переименовывает файл,
 # может создавать директории, которых не существует
 
 # for root, dirs, files in os.walk("nested1", topdown=False):
@@ -3414,8 +3431,8 @@ import re
 # Директория nested1\nested2\nested3\folder3 удалена.
 
 # import os
-# # import os.path
-#
+import os.path
+
 # print(os.path.split(r"D:\dev_Py522_TOP\pythonProject\nested1\nested2\nested3\text3.txt"))
 # print(os.path.join(r"D:\dev_Py522_TOP\pythonProject", "nested1", "nested2", "nested3", "text3.txt"))
 # print(os.path.join("nested1", r"D:\dev_Py522_TOP\pythonProject", "nested2", "nested3", "text3.txt"))
@@ -3556,16 +3573,18 @@ import os
 #     print(f"Файл {file_path} не существует")
 
 
-dir_name = "Work"
+dir_name = "Work"  # Присвоение имени каталога к переменной
 
-objs = os.listdir(dir_name)
+objs = os.listdir(dir_name)  # Отображение списка с содержимым каталога
 print(objs)
 
 
 for obj in objs:
-    p = os.path.join(dir_name, obj)
-    # print(p)
-    if os.path.isfile(p):
+    p = os.path.join(dir_name, obj)  # Конкатенация относительного адреса (адрес от текущего рабочего каталога)
+    # print(p)  # Work\F1, Work\F2, Work\w.txt  - результат прохода цикла с результатами конкатенации адресов
+    if os.path.isfile(p):  # Использование метода "Существует-ли файл по указанному пути "
         print(f"{obj} - file - {os.path.getsize(p)} bytes")
     if os.path.isdir(p):
         print(f"{obj} - dir")
+
+
