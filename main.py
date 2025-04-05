@@ -3840,3 +3840,273 @@ import re
 # h1.print_info()
 # print(h1.get_name())
 
+# 22 lesson
+
+# class Point:
+#     def __init__(self, x, y):
+#         self.__x = self.__y = 0
+#         if Point.__check_value(x) and Point.__check_value(y):
+#             # if (isinstance(x, int) or isinstance(x, float)) and (isinstance(y, int) or isinstance(y, float)):
+#             self.__x = x
+#             self.__y = y
+#
+#     def __check_value(c):
+#         if isinstance(c, int) or isinstance(c, float):
+#             return True
+#         return False
+#
+#     def set_coord(self, x, y):
+#         if Point.__check_value(x) and Point.__check_value(y):
+#             # if (isinstance(x, int) or isinstance(x, float)) and (isinstance(y, int) or isinstance(y, float)):
+#             self.__x = x
+#             self.__y = y
+#         else:
+#             print("Координаты должны быть числами")
+#
+#     def set_coord_x(self, x):
+#         if Point.__check_value(x):
+#             # if (isinstance(x, int) or isinstance(x, float)) and (isinstance(y, int) or isinstance(y, float)):
+#             self.__x = x
+#         else:
+#             print("Координата x должна быть числом")
+#
+#     def get_coord(self):
+#         return self.__x, self.__y
+#
+#
+# p1 = Point(5.2, 10)  # "abc", 10
+# # print(p1.x, p1.y)
+#
+# # p1.set_coord(5.2, 100)
+# print(p1.get_coord())
+# # p1.__x = 100
+# # p1.__y = "abc"
+# # print(p1.__x, p1.__y)
+# print(p1.__dict__)
+# # print(p1.__check_value(10))
+# # Модификаторы доступа
+# # Инкапсуляция это сво-во системы защищающее её от внешнего воздействия
+# p1._Point__x = 111  # не рекомендуемый тип доступа - прямой, лучше через get-er и set-er
+# print(p1._Point__x)  # не рекомендуемый тип доступа - прямой, лучше через get-er и set-er
+# print(p1.__dict__)
+
+# import math
+#
+#
+# class Rectangle:
+#     def __init__(self, length=1, width=1):
+#         self.__length = length
+#         self.__width = width
+#
+#     def __check_value(c):
+#         if isinstance(c, int) or isinstance(c, float):
+#             return True
+#         return False
+#
+#     def get_width(self):
+#         return self.__width
+#
+#     def get_length(self):
+#         return self.__length
+#
+#     def set_length(self, length):
+#         if Rectangle.__check_value(length):
+#             self.__length = length
+#
+#     def set_width(self, width):
+#         if Rectangle.__check_value(width):
+#             self.__width = width
+#
+#     def get_area(self):
+#         return self.__width * self.__length
+#
+#     def get_perimeter(self):
+#         return 2 * (self.__width + self.__length)
+#
+#     def get_hipotenuse(self):
+#         return round(math.sqrt((self.__length ** 2 + self.__width ** 2)), 2)
+#
+#     # def get_draw(self):
+#     #     for _ in range(self.__length):
+#     #         print("*" * self.__width)
+#
+#     def get_draw(self):
+#         print(('*' * self.__width + '\n') * self.__length)
+#
+#
+# r1 = Rectangle()
+# r1.set_width(9)
+# r1.set_length(3)
+# print("Длина прям-ка:", r1.get_length())
+# print("Ширина прям-ка:", r1.get_width())
+# print("Площадь:", r1.get_area())
+# print("Периметр", r1.get_perimeter())
+# print("Гипотенуза", r1.get_hipotenuse())
+# print(r1.get_draw())
+
+
+# class Point:
+#     __slots__ = ["x", "y", "z"]
+#
+#     def __init__(self, x, y):
+#         self.x = x
+#         self.y = y
+#
+#
+# p1 = Point(5, 10)
+# p1.z = 20
+# print()
+# # print(p1.__dict__)  # С объектом __slots__, __dict__ использовать невозможно: Errors
+# print(p1.x, p1.y, p1.z)
+# # print(p1.x, p1.y)
+
+
+# class Point:
+#     def __init__(self, x, y):
+#         self.__x = x
+#         self.__y = y
+#
+#     def __set_coord_x(self, x):
+#         print("Вызов __setCoord_X")
+#         self.__x = x
+#
+#     def __get_coord_x(self):
+#         print("Вызов __getCoord_X")
+#         return self.__x
+#
+#     def __del_coord_x(self):
+#         print("Удаление свойства")
+#         del self.__x
+#
+#     coord_X = property(__get_coord_x, __set_coord_x, __del_coord_x)
+#
+#
+# p1 = Point(5, 10)
+# # p1.__set_coord_x(50)
+# p1.coord_X = 20.5
+# print(p1.coord_X)
+# del p1.coord_X
+# print(p1.__dict__)
+
+
+# ------------------------------------------------------------------------
+class Point:
+    def __init__(self, x, y):
+        self.__x = x
+        self.__y = y
+
+    def __check_value(c):
+        if isinstance(c, int) or isinstance(c, float):
+            return True
+        return False
+
+    @property
+    def x(self):
+        return self.__x
+
+    @x.deleter
+    def x(self):
+        print("Удаление свойства")
+        del self.__x
+
+    @x.setter
+    def x(self, x):
+        if Point.__check_value(x):
+            self.__x = x
+        else:
+            print("Координат x должны быть числом")
+    # coordX = property(__get_coord_x, __set_coord_x, __del_coord_x)
+
+
+p1 = Point(5, "10")
+# p1.x = 50
+print(p1.x)
+del p1.x
+print(p1.__dict__)
+# ------------------------------------------------------------------------
+
+
+# class Person:
+#     def __init__(self, name, old):
+#         self.__name = name
+#         self.__old = old
+#
+#     @property
+#     def name(self):
+#         return self.__name
+#
+#     @name.setter
+#     def name(self, name):
+#         self.__name = name
+#
+#     @name.deleter
+#     def name(self):
+#         del self.__name
+#
+#     @property
+#     def old(self):
+#         return self.__old
+#
+#     @old.setter
+#     def old(self, old):
+#         self.__old = old
+#
+#     @old.deleter
+#     def old(self):
+#         del self.__old
+#
+#
+# p1 = Person("Irina", 26)
+# print(p1.__dict__)
+# p1.name = "Igor"
+# p1.old = 31
+# print()
+# print(p1.__dict__)
+# del p1.name
+# print(p1.__dict__)
+
+
+# class Point:
+#     __count = 0
+#
+#     def __init__(self, x=0, y=0):
+#         self.x = x
+#         self.y = y
+#         Point.__count += 1
+#
+#     @staticmethod
+#     def get_count():
+#         return Point.__count
+#
+#
+# p1 = Point()
+# p2 = Point()
+# p3 = Point()
+# print(Point.get_count())
+# print(p1.get_count())
+
+
+# def inc(x):
+#     return x + 1
+#
+#
+# def dec(x):
+#     return x - 1
+#
+#
+# print(inc(10), dec(10))
+#
+#
+# class Change:
+#     @staticmethod
+#     def inc(x):
+#         return x + 1
+#
+#     @staticmethod
+#     def dec(x):
+#         return x - 1
+#
+#
+# print(Change.inc(10), Change.dec(10))
+
+
