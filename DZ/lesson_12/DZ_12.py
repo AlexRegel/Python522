@@ -94,7 +94,6 @@ print(rect_paral_1(1, 6, 8, ))
 print()
 
 
-
 def rect_paral_1(a, b, c):
     s = 0
 
@@ -114,4 +113,3 @@ print(rect_paral_1(2, 4, 6, ))
 print(rect_paral_1(5, 8, 2, ))
 print(rect_paral_1(1, 6, 8, ))
 print()
-

@@ -89,6 +89,7 @@ if l_ == 1:
 # print("В общей сложности", int_all_symbols, "символ(ов)(а)")  # + str(int_all_symbols) +
 # print("Уникальных симвоолов:", int_symbols, type(int_symbols))
 
+# -----------------------------------------------------------------------
 """
 Уровень 2: Средний
 
@@ -96,22 +97,123 @@ if l_ == 1:
 пользователя и определяет, есть ли в этом списке одинаковые 
 элементы (дубликаты).
 """
-a = [2, 14, 12, 23, 12, 5, 17, 1, 73, 96, 19, 56, 73, 11]  # Исходный список
-print("Исходный список:", a)
-b = []
-c = []
-CountDubles = 0
-for i in range(len(a)):
-    if a[i] in b:
-        c.append(a[i])  # Формирование списка дубликатов
-        CountDubles += 1  # Счётчик дубликатов
-        continue
-    b.append(a[i])  # Список без повторений (освобождённый от дублей), формируется в цикле
-print("Список без дубликатов:", b)
-print("Количество дублей в списке:", CountDubles)
-print("Список дубликатов:", c)
+# a = [2, 14, 12, 23, 12, 5, 17, 12, 1, 73, 96, 19, 73, 56, 73, 11]  # Исходный список
+# print("Исходный список:", a)
+# b = []
+# c = []
+# CountDubles = 0
+# for i in range(len(a)):
+#     if a[i] in b:
+#         c.append(a[i])  # Формирование списка дубликатов
+#         CountDubles += 1  # Счётчик дубликатов
+#         continue
+#     b.append(a[i])  # Список без повторений (освобождённый от дублей), формируется в цикле
+# print("Список без дубликатов:", b)
+# print("Количество дублей в списке:", CountDubles)
+# print("Список дубликатов:", c)
+#
+# a_set = set(a)
+# c_set = set(c)
+# print(a_set)
+# print("Перечень дубликатов:", c_set)
+# for _ in c_set:
+#     print(_, end=" ")
+# # b_set = set(b)
+# # print(a_set, b_set, sep="\n")
 
-a_set = set(a)
-print(a_set)
-# b_set = set(b)
-# print(a_set, b_set, sep="\n")
+# -----------------------------------------------------------------------
+"""
+Уровень 3: Продвинутый
+
+Задача: напишите программу, которая принимает список слов от 
+пользователя и определяет, есть ли среди них анаграммы (слова, 
+составленные из одних и тех же букв). Если такие слова есть, 
+программа должна вывести все группы анаграмм.
+
+WEB-источник анаграмм:
+https://yandex.ru/images/search?img_url=https%3A%2F%2Ffsd.multiurok.ru%2Fhtml%2F2018%2F10%2F25%2Fs_5bd2281aada84%2F978154_10.jpeg&lr=5&ogl_url=https%3A%2F%2Ffsd.multiurok.ru%2Fhtml%2F2018%2F10%2F25%2Fs_5bd2281aada84%2F978154_10.jpeg&pos=0&rlt_url=http%3A%2F%2Fklubmama.ru%2Fuploads%2Fposts%2F2022-08%2F1661540670_1-klubmama-ru-p-anagramma-k-slovu-podelka-foto-1.jpg&rpt=simage&source=serp&text=%D1%87%D1%82%D0%BE%20%D1%82%D0%B0%D0%BA%D0%BE%D0%B5%20%D0%B0%D0%BD%D0%B0%D0%B3%D1%80%D0%B0%D0%BC%D0%BC%D1%8B%20%D0%B2%20%D1%80%D1%83%D1%81%D1%81%D0%BA%D0%BE%D0%BC%20%D1%8F%D0%B7%D1%8B%D0%BA%D0%B5
+"""
+# # Первый способ ввода слов в общий список. Одной строкой (тернарное выражение), с указанием кол-ва элементов ввода:
+# a_words = [input("-> ") for i in range(int(input("Введите кол-во эл списка: ")))]
+# print("Вы ввели список:", a_words)
+#
+# # Второй способ ввода слов в общий список. С использованием бесконечного цикла и вводом '0' для его завершения:
+# print("Введите список слов или '0', если ввод закончили:")
+# lst_words = []
+# while True:
+#     word = input("-> ")
+#     if word == "0":
+#         break  # Завершение цикла, когда пользователь ввёл '0'
+#     else:
+#         word = word.lower()  # Для удобства, преобразуем в нижний регистр
+#         lst_words.append(word)  # Добавление слов в список
+#
+# print("Вы ввели список:", lst_words)
+
+# Итак слова введены, получены списка с анаграммами
+# lst_words = ['колба', 'бокал', 'балок']
+# lst_words2 = ['клоун', 'колун', 'уклон', 'кулон']
+# lst_words3 = ['коран', 'крона', 'нарок', 'норка']
+# lst_words4 = ['приказ', 'каприз']
+# lst_words5 = ['монета', 'немота', 'отмена']
+
+# Создадим из них один список с анаграммами (к примеру из списков 1, 5 и 2 (3 группы анаграмм)):
+# lst_words_ = ['колба', 'бокал', 'балок', 'монета', 'немота', 'отмена', 'клоун', 'колун', 'уклон', 'кулон']
+# Или все 5 групп анаграмм используем:
+lst_words_ = [
+    'колба', 'клоун', 'балок', 'монета', 'немота', 'отмена', 'бокал', 'колун', 'уклон', 'кулон', 'приказ', 'каприз',
+    'коран', 'крона', 'нарок', 'норка'
+]
+
+lst_words_2 = lst_words_  # .copy()
+all_group_anagram = []
+#   set_group_anagram = set()
+for i in range(len(lst_words_)):  # lst_words_
+    # print(f"\nСлово: '{lst_words_[i]}',", type(lst_words_[i]), end="\n\n")  # Выводим слово (для контроля)
+    set_word = set(lst_words_[i])  # Преобразуем слово во множество, для последующего сравнения множеств
+    # print(f"Множество из слова: '{set_word}',", type(set_word))  # Выводим множество из слова (для контроля)
+    count_anagram = 0  # Счётчик количества анаграмм
+    group_anagram = []  # Список анаграмм в рамках одной группы
+    for j in range(len(lst_words_2)):
+        # print(count_anagram)  # вывод кол-ва анаграмм для вывода промежуточных списков (строки 180, 176 кода)
+        set_words_2 = set(lst_words_2[j])  # преобразуем во множество элемент второго списка
+        if (set_words_2 == set_word) and (lst_words_2[j] not in group_anagram):  # условие сравнения множеств для append
+            # count_anagram += 1  # Подсчёт кол-ва анаграмм для вывода промежуточных списков (строки 180, 173 кода)
+            group_anagram.append(lst_words_2[j])  # Добавление новой анаграммы в список в соответствии с условием
+            set_group_anagram = set(group_anagram)  #
+        if j + 1 == len(lst_words_2):
+            # print(f"\tГруппа из {count_anagram}-х анаграмм:", group_anagram)  # вывода промежуточных списков (173, 176
+            all_group_anagram.append(group_anagram)
+
+# print("\n\tПолный Список из групп анаграмм:\n", all_group_anagram)
+
+""" Идея! Мы создали список хранения списков анаграмм 'all_group_anagram', каждый из которых в последствии 
+    будет проанализирован и выведен.
+    Итак, реализуем этот процесс: """
+
+all_group_anagram_2 = all_group_anagram
+end_group_anagram = []  # Создание списка окончательного формирования из уникальных элементов
+for i in all_group_anagram:
+    for lst_w in all_group_anagram_2:
+        if lst_w not in end_group_anagram:
+            end_group_anagram.append(lst_w)
+count_anagram = len(end_group_anagram)
+print(f"\n\tИтак, окончательный перечень состоит из {count_anagram} списков(ка) анаграмм:\n", end_group_anagram,
+      sep="\t", end="\n\n")
+for i in range(len(end_group_anagram)):
+    print(f"\tСписок № {i + 1}:", end_group_anagram[i])
+    # -------
+    # print(set(end_group_anagram[i]))
+
+print("\nРеализовано путём создания и использования в коде такого типа данных, как Множества - 'set()'.")
+
+# if n in goods:
+#     while True:
+#         try:
+#             count = int(input("Количество: "))
+#             goods[n][1] += count
+#             break
+#         except ValueError:
+#             print("Значение не корректно. Введите число")
+# else:
+#     print("Такого ключа не существует")
