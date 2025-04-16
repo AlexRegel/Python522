@@ -4615,9 +4615,8 @@ import re
 # p1.set_coord(x=120)
 # print(p1.__dict__)
 
-# -----------------------------------------------------------------------&?
-# # Абстрактные методы
-#
+# Абстрактные методы
+
 # class Point:
 #     def __init__(self, x, y):
 #         self.__x = x
@@ -4635,15 +4634,23 @@ import re
 #         self._width = width
 #
 #     def draw(self):
-#         raise NotImplementedError("В дочернем классе должен быть определён метод drow()")
+#         raise NotImplementedError("В дочернем классе должен быть определен метод draw()")
 #
 #
 # class Line(Prop):
+#
 #     def draw(self):
 #         print(f"Рисование линии: {self._sp}, {self._ep}, {self._color}, {self._width}")
 #
 #
+# class Rect(Prop):
+#
+#     def draw(self):
+#         print(f"Рисование прямоугольника: {self._sp}, {self._ep}, {self._color}, {self._width}")
+#
+#
 # class Ellipse(Prop):
+#
 #     def draw(self):
 #         print(f"Рисование эллипса: {self._sp}, {self._ep}, {self._color}, {self._width}")
 #
@@ -4651,12 +4658,12 @@ import re
 # figs = list()
 # figs.append(Line(Point(0, 0), Point(10, 10)))
 # figs.append(Line(Point(10, 10), Point(20, 20)))
-# figs.append(Prop(Point(50, 50), Point(100, 100)))
+# figs.append(Rect(Point(50, 50), Point(100, 100)))
 # figs.append(Ellipse(Point(70, 70), Point(90, 90)))
 #
 # for f in figs:
 #     f.draw()
-# -----------------------------------------------------------------------&?
+
 
 # from abc import ABC, abstractmethod
 #
@@ -4792,37 +4799,37 @@ import re
 
 # Интерфейс
 
-from abc import ABC, abstractmethod
-
-
-class Father(ABC):
-    @abstractmethod
-    def display1(self):
-        pass
-
-    @abstractmethod
-    def display2(self):
-        pass
-
-
-class Child(Father):
-    def display1(self):
-        print("Child Class")
-
-    def func(self):
-        super().func()
-        print("Child")
-
-
-class GrandChild(Child):
-    def display2(self):
-        print("GrandChild Class")
-
-    def func(self):
-        super().func()
-        print("GrandChild")
-
-
-gc = GrandChild()
-gc.display1()
-gc.display2()
+# from abc import ABC, abstractmethod
+#
+#
+# class Father(ABC):
+#     @abstractmethod
+#     def display1(self):
+#         pass
+#
+#     @abstractmethod
+#     def display2(self):
+#         pass
+#
+#
+# class Child(Father):
+#     def display1(self):
+#         print("Child Class")
+#
+#     def func(self):
+#         super().func()
+#         print("Child")
+#
+#
+# class GrandChild(Child):
+#     def display2(self):
+#         print("GrandChild Class")
+#
+#     def func(self):
+#         super().func()
+#         print("GrandChild")
+#
+#
+# gc = GrandChild()
+# gc.display1()
+# gc.display2()
