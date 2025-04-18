@@ -4385,7 +4385,7 @@ import re
 #
 #     def __str__(self) -> str:  # -> int
 #         return f"({self.__x}, {self.__y})"
-#
+
 #
 # class Prop:
 #     def __init__(self, sp: Point, ep: Point, color: str = "red", width: int = 1) -> None:
