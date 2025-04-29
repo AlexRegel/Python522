@@ -4,7 +4,7 @@
 # доступ к отдельным полям через методы класса.
 
 # Перечень выражений для удобства создания класса и его методов и свойств:
-# Car, model, year_release, manufacturer, engine_power, car_color, price
+# car, model, year_release, manufacturer, engine_power, car_color, price
 # Реализация класса:
 class Car:
 
@@ -79,7 +79,7 @@ print(c1.get_model())
 print(c1.get_engine_power())
 print(c1.get_price())
 print()
-# Выводим те-же данные другим способом, т.е. через сам класс "Car",
+# Выводим те-же данные другим способом, т.е. через сам класс "car",
 # используя его методы, с указанием экземпляра класса (c1):
 Car.print_info(c1)
 print(Car.get_model(c1))

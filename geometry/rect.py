@@ -7,19 +7,24 @@ class Rectangle:
         return 2 * (self.w + self.h)
 
 
-class Square:
-    def __init__(self, a):
-        self.a = a
+__author__ = "admin"
+if __name__ == "__main__":
+    print(f"Module {__name__} (author: {__author__})")
 
-    def get_perimeter(self):
-        return 4 * self.a
-
-
-class Triangl:
-    def __init__(self, a, b, c, ):
-        self.a = a
-        self.b = b
-        self.c = c
-
-    def get_perimeter(self):
-        return self.a + self.b + self.c
+#
+# class Square:
+#     def __init__(self, a):
+#         self.a = a
+#
+#     def get_perimeter(self):
+#         return 4 * self.a
+#
+#
+# class Triangl:
+#     def __init__(self, a, b, c, ):
+#         self.a = a
+#         self.b = b
+#         self.c = c
+#
+#     def get_perimeter(self):
+#         return self.a + self.b + self.c
