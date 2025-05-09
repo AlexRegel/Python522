@@ -1,6 +1,7 @@
 # from math import sqrt, pi  # *  # sqrt, ceil, floor
 # from cmath import sqrt
 import math
+
 try:
     fig = int(input(
         "Выберите фигуру для вычисления её площади.\nВведите - 1, если выбрали треугольник,"

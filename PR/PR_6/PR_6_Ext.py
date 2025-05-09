@@ -64,3 +64,9 @@ print(side_2, type(side_2))
 #         for key, value in Triangle.temper_dict.items():
 #             if key == side_1:
 #                 self.side_2 = value
+
+
+# f = open('country.json', "r")
+        # read_line = f.readlines()
+#        f.close()
+        # print(read_line, "файл закрыт.")
