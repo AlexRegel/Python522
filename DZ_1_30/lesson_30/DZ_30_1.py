@@ -14,14 +14,28 @@ class Country:  # Класс создания и хранения списка �
     country_dict = dict()  # создали пустой словарь для стран и столиц. Словарь - это 1 элемент списка.
     remote_dict_in_lst = dict()  # создали пустой словарь для присвоения удаляемого элемента списка
     search_dict_in_lst = dict()  # создали пустой словарь для присвоения элемента списка при поиске
+    file_name = 'country.json'
 
     @staticmethod
-    def add_data(country_tuple):  # add, country_tuple
-        try:
-            with open('country.json', 'r') as fr:
+    def load(file_name):
+        try:  # , encoding="utf-8": в моём случае эта строка не вписывается в Load
+            with open(Country.file_name) as fr:
                 Country.country_lst = json.load(fr)
         except FileNotFoundError:
             Country.country_lst = []
+        finally:
+            return Country.country_lst
+
+    # Country.country_lst = Country.load()
+    @staticmethod
+    def add_data(country_tuple):  # add, country_tuple
+        # try:
+        #     with open(Country.file_name) as fr:  # ', 'r'' - при чтении файла это не обязательный параметр
+        #         Country.country_lst = json.load(fr)
+        # except FileNotFoundError:
+        #     Country.country_lst = []
+
+        Country.country_lst = Country.load(Country.file_name)  # Использование стат. функции load() -5 строк кода
 
         Country.country_dict[country_tuple[0]] = country_tuple[1]  # Заполнение словаря как 1-го элемента списка
         Country.country_lst.append(Country.country_dict)  # Добавление словаря в список
@@ -35,12 +49,13 @@ class Country:  # Класс создания и хранения списка �
         del country_tuple
 
     @staticmethod
-    def remove_data(index_=None, key_=None):  # remove  Country.remove_data(index_=None)
-        try:
-            with open('country.json', 'r') as fr:
-                Country.country_lst = json.load(fr)
-        except FileNotFoundError:
-            Country.country_lst = []
+    def remove_data(index_=None, key_=None):  # remove
+        # try:
+        #     with open('country.json', 'r') as fr:
+        #         Country.country_lst = json.load(fr)
+        # except FileNotFoundError:
+        #     Country.country_lst = []
+        Country.country_lst = Country.load(Country.file_name)  # Использование стат. функции load() -5 строк кода
 
         if Country.country_lst and not (index_ is None):
             remote_dict_in_lst = Country.country_lst.pop(index_)
@@ -198,7 +213,7 @@ try:
             country = input(
                 "Введите название страны (с заглавной буквы): ")
             capital = input("Введите название столицы страны (с заглавной буквы): ")
-            country_tuple_ = (country.capitalize(), capital.title())  # Например: ("Эстония", "Таллин")
+            country_tuple_ = (country.capitalize(), capital.capitalize())  # Например: ("Эстония", "Таллин")
             Country.add_data(country_tuple_)
         if action == 2:
             country = input("Введите название страны для удаления: ")
@@ -239,5 +254,115 @@ except ValueError:
 # # Во все другие методы, где требуется этот код, вставить следующее выражение:
 #         data = CountryCapital.load(file_name)
 
-# 2-й подход, рассматривался на уроке: скопировал в DZ_30_1.
-
+# 2-й подход, рассматривался на уроке:
+# *************************************************************************************
+# # -- coding: utf8 --.
+# import json
+#
+#
+# class CountryCapital:
+#     @staticmethod
+#     def load(file_name):
+#         try:
+#             data = json.load(open(file_name))  # , encoding="utf-8": в моём случае эта строка не вписывается в Load
+#         except FileNotFoundError:
+#             data = {}
+#         finally:
+#             return data
+#
+#     @staticmethod
+#     def add_country(file_name):
+#         new_country = input("Введите название страны: ").lower()
+#         new_capital = input("Введите название столицы: ").lower()
+#
+#         # try:
+#         #     data = json.load(open(file_name, encoding="utf-8"))
+#         # except FileNotFoundError:
+#         #     data = {}
+#         data = CountryCapital.load(file_name)
+#
+#         data[new_country] = new_capital
+#
+#         with open(file_name, "w") as f:
+#             json.dump(data, f, indent=2, ensure_ascii=False)
+#
+#     @staticmethod
+#     def load_from_file(file_name):
+#         with open(file_name) as f:
+#             print({k.title(): v.title() for k, v in json.load(f).items()})
+#
+#     @staticmethod
+#     def delete_country(file_name):
+#         del_country = input("Введите название страны: ").lower()
+#
+#         # try:
+#         #     data = json.load(open(file_name, encoding="utf-8"))
+#         # except FileNotFoundError:
+#         #     data = {}
+#         data = CountryCapital.load(file_name)
+#
+#         if del_country in data:
+#             del data[del_country]
+#
+#             with open(file_name, "w") as f:
+#                 json.dump(data, f, indent=2, ensure_ascii=False)
+#         else:
+#             print("Такой страны в базе нет")
+#
+#     @staticmethod
+#     def search_data(file_name):
+#         country = input("Введите название страны: ").lower()
+#
+#         # try:
+#         #     data = json.load(open(file_name, encoding="utf-8"))
+#         # except FileNotFoundError:
+#         #     data = {}
+#         data = CountryCapital.load(file_name)
+#
+#         if country in data:
+#             print(f"Страны {country.title()} столица {data[country].title()} есть в словаре")
+#         else:
+#             print(f"Страны {country.title()} нет в словаре")
+#
+#     @staticmethod
+#     def edit_data(file_name):
+#         country = input("Введите страну для корректировки: ").lower()
+#         new_capital = input("Введите новое название столицы: ").lower()
+#
+#         # try:
+#         #     data = json.load(open(file_name, encoding="utf-8"))
+#         # except FileNotFoundError:
+#         #     data = {}
+#         data = CountryCapital.load(file_name)
+#
+#         if country in data:
+#             data[country] = new_capital
+#
+#             with open(file_name, "w") as f:
+#                 json.dump(data, f, indent=2, ensure_ascii=False)
+#         else:
+#             print("Такой страны в базе нет")
+#
+#
+# file = "list_capital.json"
+# while True:
+#     index = input("Выбор действия:\n1 - добавление данных\n2 - удаление данных\n3 - поиск данных\n"
+#                   "4 - редактирование данных\n5 - просмотр данных\n6 - завершение работы\n"
+#                   "Ввод: ")
+#     if index == "1":
+#         CountryCapital.add_country(file)
+#     elif index == "2":
+#         CountryCapital.delete_country(file)
+#     elif index == "3":
+#         CountryCapital.search_data(file)
+#     elif index == "4":
+#         CountryCapital.edit_data(file)
+#     elif index == "5":
+#         CountryCapital.load_from_file(file)
+#     elif index == "6":
+#         break
+#     else:
+#         print("Введен некорректный номер")
+#
+#     print("*" * 50)
+# *************************************************************************************

@@ -1,81 +1,98 @@
+# -- coding: utf8 --.
 import json
 
-# data_control_dict = {1: 1, 3: 2, 5: 3, 7: 4, 9: 5, 11: 6, 13: 7, 15: 8, 17: 9, 19: 10, 21: 11}
+# employees = dict()
+# employees[(1, "Alice")] = {"position": "Manager", "skills": {"leadership", "communication"}}
+# employees[(2, "Bob")] = {"position": "Developer", "skills": {"python", "databases"}}
 #
-# side_2 = None
-# side_1 = 13
+# for (id, name), info in employees.items():
+#     print(f"Сотрудник {id}: {name}")
+#     print(f"id-type {type(id)}:name-type {type(name)}")
+#     print(f"Должность: {info['position']}")
+#     print(f"type(info['position']): {type(info['position'])}, type('position') {type('position')}")
+#     print(f"Навыки: {', '.join(info['skills'])}")
+#     print(f"skills-type: {type(', '.join(info['skills']))}")
 #
-# if side_2 is None:
-#     if side_1 in data_control_dict.values():  # .keys()
-#         print(True)
-#     else:
-#         print(False)
-#
-# for i, j in data_control_dict.items():
-#     side_2 = j if side_1 == i else ...
-# print()
+# print(employees)
+# print(type(employees))
+w = """=============================================================================="""
 
-person = {'name': 'Иван', 'age': 30, 'city': 'Москва'}
+"""
+Задача 1:
+Уровень 1: Базовый
+Задача: создайте кортеж из нескольких строк, затем напишите программу, которая:
 
+Определяет количество элементов в кортеже.
+Проверяет, содержится ли в кортеже заданная строка (вводится пользователем).
+Выводит первый и последний элемент кортежа."""
 
-# for key, value in person.items():
-#     print(f"Ключ: {key}")
-#     print(f"Значение: {value}")
-#     if key == 'age':
-#         person[key] = 35
+# tuple_1 = ("Определяет количество элементов в кортеже.",
+#            "Проверяет, содержится ли в кортеже заданная строка (вводится пользователем).",
+#            "Выводит первый и последний элемент кортежа."
+#            )
 #
-# # person.keys('name').capitalize()
+# a_ = "Определяет количество элементов в кортеже."
+# a = len(tuple_1)
+# print("Длина кортежа:", a)
 #
-# # .capitalize()
-# print()
-# print(f"Новое значение: {person['age']}")
-# print()
-# print(len(person))
-# person['name'] = 'Сергей'
-# person['country'] = 'Россия'
-# print(len(person))
-# print(person)
+# b = "Проверяет, содержится ли в кортеже заданная строка (вводится пользователем)."
+# b_ = input("Введите строку: ")
+# s_n = b_ in tuple_1
+# print("Содержится.") if s_n else print("Данная строка в кортеже отсутствует.")
 #
-# # for key in person.keys():
-# #      add(f"Ключ: {1}")   ????????????
-# print()
-#
-# list_to_tuple = tuple([8, 9, 10])
-# print(list_to_tuple)
-#
-# print(type(str(person.keys()).capitalize()))
-# print(str(person.values()).capitalize())
-# print(person.values())
-# print(type(person.values()))
-#
-# e = 'москва'
-# r = e.capitalize()
-# print(r)
+# c_ = "Выводит первый и последний элемент кортежа."
+# first_element = tuple_1[0]
+# last_element = tuple_1[-1]
+# print("Первый элемент кортежа 'tuple_1':", first_element)
+# print("Последний элемент кортежа 'tuple_1':", last_element)
 
-def add_data(country):  # add
-    try:
-        with open('person.json', 'r') as fr:  # , encoding='utf-8'
-            country_dict_lst = json.load(fr)
-    except FileNotFoundError:
-        country_dict_lst = []
-        print(type(country_dict_lst))
+w1 = """=============================================================================="""
 
-    # data = [{"name": student.name, 'marks': student.marks} for student in self.students]
-    print(type(country_dict_lst))
-    country_dict_lst.append(country)
-    with open('person.json', 'w') as fw:  # , encoding='utf-8'
-        json.dump(country_dict_lst, fw, ensure_ascii=False, indent=4)
-    stack = json.dumps(country_dict_lst, ensure_ascii=False, indent=4)
-    # print(stack)
-    print(json.loads(stack))
+"""
+Задача 2:
+Уровень 2: Средний
 
+Задача: напишите программу, которая позволяет пользователю управлять списком 
+своих любимых жанров с использованием словаря. Каждый жанр должен быть ключом,
+а значением — кортеж с двумя элементами: годом,
+когда жанр стал любимым, и кратким описанием жанра."""
 
-# comment = r'\u041d\u0435 \u0443\u043a\u0430\u0437\u0430\u043d\u043e'
-# print(type(comment))
-# print(comment)
-# print(comment.encode('ascii').decode('unicode-escape'))
+genres_dict = {"Боевые искусства": (1995, "Фильмы про восточные боевые искусства"),
+               "Астрофизика": (2003, "док. Фильмы про вселенную")}
 
-# person = {'name': 'Иван', 'age': 30, 'city': 'Москва'}
-person2 = {'name': 'Сергей', 'age': 25, 'city': 'Питер'}
-add_data(person)
-add_data(person2)
+# sr = json.dumps(genres_dict, indent=2)  # ensure_ascii=False,
+# genres_d = json.loads(sr)
+# print(genres_d)
+# # a =json.dumps(x)
+# # print(json.loads(a))
+
+# Срезы списка
+d = [
+  {
+    "Россия": "Москва"
+  },
+  {
+    "Франция": "Париж"
+  },
+  {
+    "Эстония": "Таллин"
+  },
+  {
+    "Египет": "Каир"
+  },
+  {
+    "Израиль": "Иерусалим"
+  },
+  {
+    "Япония": "Токио"
+  }
+]
+print(d[2])
+
+w2 = """=============================================================================="""
+
+"""
+Задача 3:
+Уровень 3: 
+
+"""

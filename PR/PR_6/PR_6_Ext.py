@@ -1,5 +1,5 @@
 # -- coding: utf8 --.
-
+a = """Экспериментальный_код"""
 data_control_dict = {1: 1, 3: 2, 5: 3, 7: 4, 9: 5, 11: 6, 13: 7, 15: 8, 17: 9, 19: 10, 21: 11}
 side_3 = None
 side_2 = None
@@ -67,6 +67,6 @@ print(side_2, type(side_2))
 
 
 # f = open('country.json', "r")
-        # read_line = f.readlines()
+# read_line = f.readlines()
 #        f.close()
-        # print(read_line, "файл закрыт.")
+# print(read_line, "файл закрыт.")
