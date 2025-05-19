@@ -14,7 +14,7 @@ class Country:  # Класс создания и хранения списка �
     country_dict = dict()  # создали пустой словарь для стран и столиц. Словарь - это 1 элемент списка.
     remote_dict_in_lst = dict()  # создали пустой словарь для присвоения удаляемого элемента списка
     search_dict_in_lst = dict()  # создали пустой словарь для присвоения элемента списка при поиске
-    file_name = 'country.json'
+    file_name = 'country.json'  # Country.file_name
 
     @staticmethod
     def load(file_name):
@@ -40,7 +40,7 @@ class Country:  # Класс создания и хранения списка �
         Country.country_dict[country_tuple[0]] = country_tuple[1]  # Заполнение словаря как 1-го элемента списка
         Country.country_lst.append(Country.country_dict)  # Добавление словаря в список
         # print(Country.country_lst)
-        with open('country.json', 'w') as fw:
+        with open(Country.file_name, 'w') as fw:
             json.dump(Country.country_lst, fw, ensure_ascii=False, indent=2)
         print("Файл сохранён.")
         print(f"*".center(30, "*"))
@@ -59,7 +59,7 @@ class Country:  # Класс создания и хранения списка �
 
         if Country.country_lst and not (index_ is None):
             remote_dict_in_lst = Country.country_lst.pop(index_)
-            print(f"Из файла 'country.json' удалён словарь: {remote_dict_in_lst}")
+            print(f"Из файла {Country.file_name} удалён словарь: {remote_dict_in_lst}")
         elif Country.country_lst and not (key_ is None):
             count_ = 0  # Чтобы индексы не перебирать, перегружая код, создали счётчик, в качестве индекса
             for element in Country.country_lst:

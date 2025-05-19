@@ -38,5 +38,41 @@ print()
 # print("В итоге имеем словарь:", country_lst)
 key_ = {"Франция": "Париж"}
 
-print(True, "Отсутствует в коллекции") if key_ not in country_lst else print(False, "Присутствует в коллекции")  # not in None
+print(True, "Отсутствует в коллекции") if key_ not in country_lst else print(False,
+                                                                             "Присутствует в коллекции")  # not in None
+print()
+print()
 
+# unpack_lst_country = *country_lst
+# print(unpack_lst_country)
+
+print(*country_lst)
+print(country_lst)
+
+# class Experiment:
+#     # def __init__(self, ext):  # : list
+#     #     self.ext = ext
+#
+#     def unpack_lst(self, lst):
+#         ert = Experiment(*lst)
+#         print(ert)
+#
+#
+# e = Experiment(country_lst)
+# print(e.unpack_lst(country_lst))
+# # Experiment.unpack_lst(country_lst)
+
+country_lst = [
+    {"Россия": "Москва"}, {"Франция": "Париж"}, {"Франция": "Париж"},
+    {"Эстония": "Таллин"}, {"Япония": "Токио"}]
+
+for i, t in enumerate(country_lst, 1):
+    print(i, t)
+
+numbers = [1, 2, 3, 4, 5]
+first, *middle, last = numbers
+print(first)  # 1
+print(middle)  # [2, 3, 4]
+print(last)  # 5
+*mi, las = numbers
+print(mi)
