@@ -88,6 +88,7 @@ d = [
     }
 ]
 print(d[2])
+print(d[4]["Израиль"])
 
 w2 = """=============================================================================="""
 
@@ -99,3 +100,22 @@ w2 = """========================================================================
 Пользователь может добавлять новых сотрудников, удалять их по имени и просматривать список всех сотрудников с 
 должностями."""
 
+employees = dict()
+employees[(1, "Alice")] = {"position": "Manager", "skills": {"leadership", "communication"}}
+employees[(2, "Bob")] = {"position": "Developer", "skills": {"python", "databases"}}
+
+for (id, name), info in employees.items():
+    print(f"Сотрудник {id}: {name}")
+    print(f"id-type {type(id)}:name-type {type(name)}")
+    print(f"Должность: {info['position']}")
+    print(f"type(info['position']): {type(info['position'])}, type('position') {type('position')}")
+    print(f"Навыки: {', '.join(info['skills'])}")
+    print(f"skills-type: {type(', '.join(info['skills']))}")
+
+print(employees)
+print(type(employees))
+print()
+print(employees.values())
+print()
+for key, values in employees.items():
+    print(key, values)
