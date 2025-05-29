@@ -6369,3 +6369,123 @@ import re
 #     )""")
 #     cur.execute("DROP TABLE users")
 
+
+# Lesson 34 (DB) 21_05_2025
+
+# import sqlite3
+
+# with sqlite3.connect("users.db") as con:
+#     cur = con.cursor()
+# cur.execute("""
+# CREATE TABLE IF NOT EXISTS person(
+# id INTEGER PRIMARY KEY AUTOINCREMENT,
+# name TEXT NOT NULL,
+# phone BLOB NOT NULL DEFAULT '+79890000000',
+# age INTEGER CHECK(age > 0 AND age < 100),
+# email TEXT UNIQUE
+# )
+# """)
+# cur.execute("""
+# ALTER TABLE person
+# RENAME TO person_table;
+# """)
+
+# cur.execute("""
+#     ALTER TABLE person_table
+#     ADD COLUMN address TEXT NOT NULL DEFAULT '___';
+#     # ADD COLUMN address TEXT;
+#     """)
+# ALTER TABLE person_table - внесение изменений в таблицу
+#     cur.execute("""
+#         ALTER TABLE person_table
+#         RENAME COLUMN address TO home_address;
+#         """)
+
+# cur.execute("""
+#         ALTER TABLE person_table
+#         DROP COLUMN home_address;
+#         """)
+
+# cur.execute("""
+#             DROP TABLE person_table
+#             """)
+
+
+import sqlite3
+
+# with sqlite3.connect("db_3.db") as con:
+#     cur = con.cursor()
+#     cur.execute("""
+#     SELECT *
+#     FROM T1
+#     LIMIT 2, 5
+#     """)
+#
+#     # for res in cur:
+#     #     print(res)
+#
+#     # res = cur.fetchall()  # Выносит подряд все картежи
+#     # print(res)
+#
+#     res2 = cur.fetchmany(2)
+#     print(res2)
+#     res1 = cur.fetchone()
+#     print(res1)
+
+
+# lst = ['a', 'b', 'c']
+# # print(sum(lst))
+# print(lst[0]+lst[1]+lst[2])
+
+# lst1 = [1, 2, 3]
+# res = 0
+# for i in lst1:
+#     res += i
+#
+# print(res)
+# # print(sum(lst1))
+
+
+# lESSON 36
+
+# import sqlite3
+#
+# list_cars = [
+#     ('BMW', 54000),
+#     ('Chevrolet', 46000),
+#     ('Daewoo', 38000),
+#     ('Citroen', 29000),
+#     ('Honda', 33000)
+# ]
+#
+# with sqlite3.connect("car.db") as con:
+#     cur = con.cursor()
+#     cur.execute("""CREATE TABLE IF NOT EXISTS cars(
+#         car_id INTEGER PRIMARY KEY AUTOINCREMENT,
+#         model TEXT,
+#         price INTEGER)
+#     """)
+#
+#     # for car in list_cars:
+#     #     cur.execute("INSERT INTO cars VALUES(NULL, ?, ?)", car)
+#
+#     # cur.executemany("INSERT INTO cars VALUES(NULL, ?, ?)", list_cars)
+#
+#     cur.executescript("""
+#     DELETE FROM cars WHERE model LIKE 'B%';
+#     UPDATE cars SET price = price + 100;
+#     """)
+
+# with sqlite3.connect("car.db") as con:
+#     cur = con.cursor()
+#     cur.execute("""CREATE TABLE IF NOT EXISTS cars(
+#         car_id INTEGER PRIMARY KEY AUTOINCREMENT,
+#         model TEXT,
+#         price INTEGER)
+#     """)
+
+# cur.execute("INSERT INTO cars VALUES(1, 'Renault', 22000)")
+# cur.execute("INSERT INTO cars VALUES(2, 'Volvo', 29000)")
+# cur.execute("INSERT INTO cars VALUES(3, 'Mersedes', 57000)")
+# cur.execute("INSERT INTO cars VALUES(4, 'Bently', 35000)")
+# cur.execute("INSERT INTO cars VALUES(5, 'Audi', 52000)")

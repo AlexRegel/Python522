@@ -1,0 +1,21 @@
+1:
+
+SELECT ID AS "код по магазину", Produce AS "Название продукта", Material AS Материал,
+Color Цвет, Country "Страна производитель", ID_salespeople 'Код поставщика продустов',
+Price [Цена за штуку], Count AS [Количество штук]
+FROM Ware
+WHERE ID_salespeople IS NULL
+
+
+12:
+
+SELECT REM, ID_salespeople 
+FROM Ware
+WHERE REM GLOB "*Case*" AND Price*Count < 1200;
+
+
+19:
+
+SELECT Produce, REM
+FROM Ware
+WHERE REM GLOB "*1[6-8]*";
