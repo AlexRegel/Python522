@@ -1,0 +1,257 @@
+ID - код по магазину
+Produce - название продукта
+Material – материал
+Color – цвет
+Size – размер
+Country - страна производитель
+ID_salespeople - код поставщика товара
+Price - цена за штуку
+Count - количество штук
+REM - ремарки
+
+========================================================================
+
+1. Определите для какого товара код поставщика не определен. (полностью вся табл. переименованные атрибуты)
+(с занятия)
+
+SELECT ID AS "код по магазину", Produce AS "Название продукта", Material AS Материал,
+Color Цвет, Country "Страна производитель", ID_salespeople 'Код поставщика продустов',
+Price [Цена за штуку], Count AS [Количество штук]
+FROM Ware
+WHERE ID_salespeople IS NULL
+
+2. Определить все товары, которые производятся в Беларуси (марка, код товара. страна)
+
+SELECT Produce AS "Название продукта", ID_salespeople 'Код поставщика товара', Country "Страна производитель"
+FROM Ware
+WHERE Country IS "Беларусь"
+
+3. Удалите из таблицы все товары, которые произведены в Германии
+
+DELETE FROM Ware
+WHERE Country IS "Германия"
+
+--SELECT *
+--FROM Ware
+--WHERE Country IS "Германия"
+
+4. Замените страну-производителя Польшу на Россию (код, товар, страна, описание товара).
+
+/*SELECT ID, Produce, Country, REM
+FROM Ware
+WHERE Country IS "Польша";*/
+
+UPDATE Ware 
+SET Country = REPLACE(Country, 'Польша', 'Россия') 
+WHERE Country IS "Польша";
+
+/*SELECT ID, Produce, Country, REM
+FROM Ware
+WHERE Country IS "Россия";*/
+
+5. Восстановите строки, удаленные в 3 пункте.
+
+INSERT INTO Ware (ID, Produce, Material, Color, 
+Size, Country, ID_salespeople, Price, Count, REM)
+VALUES (1026, '(F8E157eaLRG)', 'полиэстер/ нейлон', 'ч', 
+'38,1x28x70', 'Германия', 2014, 126, 0, 'Stone Street Case (15)');
+--
+VALUES (1254, 'CC06', 'нейлон', 'ч', '38x29x7', 'Германия', 2011, 110, 6, 'Nylon Computer Case (15)');
+--
+VALUES (1049, 'KCB-03BKP', 'кожзам', 'ч', '40x30x8,5', 'Германия', 2001, 325, 14, 'System Case (15)');
+--
+VALUES (1001, 'CKN-002', 'кожзам', 'ч', '39x30x6,4', 'Германия', 2001, 143, 2, 'Notebrief (13.2")');
+--
+VALUES (1036, 'CN01', 'полиэстер', 'ч', '39x30x5', 'Германия', 2011, 435, 32, 'Computer Case (15/15,4")');
+--
+VALUES (1017, 'PON-303BK', 'полиэстер', 'ч', '44,5x33,7x5,1', 'Германия', 2015, 110, 29, 'Large Expandable computer brief(17")');
+
+
+6.  Выведите весь товар, который не черного цвета (продукт, цену, код продукта)
+
+SELECT Produce AS "Название продукта", Color AS 'Цвет', Price AS 'Цена', ID_salespeople 'Код поставщика товара'
+FROM Ware
+WHERE Color IS NOT "ч"
+
+7. Вставьте строку  NTC-117BK Micro Camera Case, нейлон, ч, 13,3x8,3x5,7, 2016, Беларусь, 1046
+
+INSERT INTO Ware (ID, Produce, Material, Color, 
+Size, Country, ID_salespeople, Price, Count, REM)
+VALUES (1046, 'NTC-117BK', 'нейлон', 'ч', 
+'13,3x8,3x5,7', 'Беларусь', 2016, NULL, NULL, 'Micro Camera Case');
+
+--DELETE FROM Ware
+--WHERE Country IS 'Беларусь' 
+--AND Material IS 'нейлон' 
+--AND Produce IS 'NTC-117BK';
+
+8. Вставьте строку POC-463BK	Compact Camera Case, полиэстер, ч, 11x7x4,5, остальные данные не определены.
+
+INSERT INTO Ware (ID, Produce, Material, Color, 
+Size, Country, ID_salespeople, Price, Count, REM)
+VALUES (1255, 'POC-463BK', 'полиэстер', 'ч', 
+'11x7x4,5', NULL, NULL, NULL, NULL, 'Compact Camera Case');
+
+9. Вывести весь товар, который поставляет продавец с кодом 2065 из России
+
+SELECT *
+FROM Ware
+WHERE ID_salespeople IS 2065 AND Country IS 'Россия';
+
+10. Вывести товар, цена за который находится в диапазоне от 200 до 345
+
+SELECT *
+FROM Ware
+WHERE Price BETWEEN 200 AND 345;
+
+11. Определите все сумки из кожи с размером не менее 40х30х5
+
+SELECT Produce AS 'Название продукта', Material AS 'Материал',
+Size AS 'Размер', REM AS 'Ремарка'
+FROM Ware
+WHERE (REM LIKE "%Bag%" OR "%bag%"  -- Сумка
+OR REM GLOB "*case*" OR REM GLOB "*Case*") -- или портфель 
+AND Size > '40х30х5' AND Material IS 'кожа';
+--REM LIKE "%Briefcase%" OR "%briefcase%" 
+
+12. Написать запрос, который выводит все сумки и коды их поставщиков, если товара меньше чем на 1200 руб.
+(с занятия)
+
+SELECT REM, ID_salespeople 
+FROM Ware
+WHERE REM GLOB "*Case*" AND Price*Count < 1200;
+
+13. Написать запрос, который заменит код поставщика на 2000, если на складе хранится товара менее чем на 500 руб. По данному поставщику.
+
+UPDATE Ware 
+SET ID_salespeople = 2000
+WHERE Price*Count < 500;
+
+либо:
+
+UPDATE Ware 
+SET ID_salespeople = REPLACE(ID_salespeople, ID_salespeople, 2000) 
+WHERE Price*Count < 500 AND ID_salespeople = ID_salespeople;
+
+Оба варианта отрабатывают одинаково.
+Перед и после проверели стосояние БД запросами:
+
+--SELECT ID_salespeople, Price, Count
+--FROM Ware 
+--WHERE Price*Count < 500
+
+--SELECT ID_salespeople, Price, Count
+--FROM Ware 
+--WHERE ID_salespeople == 2000
+
+
+14. Вывести все кожаные сумки, количество которых менее 5 шт. и общая сумма товара не превышает 450 руб. 
+
+SELECT Produce AS 'Название продукта', Material AS 'Материал',
+Count AS 'Количество', REM AS 'Ремарка', Price AS 'Цена'
+FROM Ware
+WHERE (REM GLOB "*case*" OR REM GLOB "*Case*") AND 
+ Count < 5 AND Price*Count <= 450 AND Material IS 'кожа';
+
+15. Напишите запрос, который выведет все нейлоновые сумки цена на которые не превышает 250 руб.
+
+SELECT Produce AS 'Название продукта', Material AS 'Материал',
+REM AS 'Ремарка', Price AS 'Цена', REM AS 'Ремарка'
+FROM Ware
+WHERE (REM GLOB "*case*" OR REM GLOB "*Case*") AND 
+ Price < 250 AND Material IS 'нейлон';
+
+16. Замените материал нейлон на брезент, если сумка стоит менее 200 руб. 
+
+Предварительная проверка БД:
+--SELECT Produce, Material, Country, REM
+--FROM Ware
+--WHERE Material IS 'нейлон' AND Price < 200;*/
+
+Замена по заданию:
+UPDATE Ware 
+SET Material = REPLACE(Material, 'нейлон', 'брезент') 
+WHERE Material IS 'нейлон' AND Price < 200;
+
+Проверка БД после произведённых замен:
+--SELECT Produce, Material, Country, REM
+--FROM Ware
+--WHERE Material IS 'брезент' AND Price < 200;
+
+17. Напишите запрос, который выводит все сумки, у которых есть косметички
+
+SELECT *
+FROM Ware
+WHERE REM LIKE "%косметичка%" OR "%Cosm%" OR "%cosm%";
+
+либо другой вариант (работают одинаково):
+SELECT *
+FROM Ware
+WHERE REM GLOB "*косметичка*" OR REM GLOB "*Cosm*" 
+OR REM GLOB "*cosm*";
+
+18. Напишите запрос, который покажет все кожаные сумки черного цвета китайского производства.
+
+SELECT Produce AS 'Название продукта', Material AS 'Материал', 
+Color AS 'Цвет', Country AS 'Страна производитель', REM AS 'Ремарка'
+FROM Ware
+WHERE Material IS 'кожа' AND Color IS 'ч' AND Country IS 'Китай';
+
+
+19. Напишите запрос, который покажет все сумки с размером более 15 дюймов.
+
+SELECT Produce, REM
+FROM Ware
+WHERE REM GLOB "*1[6-8]*";
+
+20. Напишите запрос, который покажет всех поставщиков сумок не черного цвета.
+
+SELECT ID_salespeople AS 'Код поставщика', Color AS 'Цвет',
+ Country AS 'Страна производитель', REM AS 'Ремарка'
+FROM Ware
+WHERE Color IS NOT 'ч';
+
+21. Замените материал полиэстер у сумок китайского производства на нейлон
+
+Предварительная проверка БД:
+--SELECT Material, Country, REM
+--FROM Ware
+--WHERE Material IS 'полиэстер' AND Country IS 'Китай';
+
+Замена по заданию:
+UPDATE Ware 
+SET Material = REPLACE(Material, 'полиэстер', 'нейлон')
+WHERE Material IS 'полиэстер' AND Country IS 'Китай';
+
+либо, доругим способом:
+
+UPDATE Ware 
+SET Material = 'нейлон'
+WHERE Material IS 'полиэстер' AND Country IS 'Китай';
+
+Проверка БД после произведённых замен:
+--SELECT Produce, Material, Country, REM
+--FROM Ware
+--WHERE Material IS 'нейлон' AND Country IS 'Китай';
+
+
+22. В записях с кодом товара: 1015, 1041, 1032, 1010 материал полиэстер заменить на нейлон если страна-производитель Китай.
+
+Предварительная проверка БД:
+SELECT ID, Material, Country, REM
+FROM Ware
+WHERE (ID IS 1015 OR ID IS 1041 OR ID IS 1032 OR ID IS 1010) 
+AND Material IS 'полиэстер' AND Country IS 'Китай'
+
+Замена по заданию:
+UPDATE Ware 
+SET Material = REPLACE(Material, 'полиэстер', 'нейлон') 
+WHERE (ID IS 1015 OR ID IS 1041 OR ID IS 1032 OR ID IS 1010)
+AND Material IS 'полиэстер' AND Country IS 'Китай';
+
+Проверка БД после произведённых замен:
+--SELECT ID, Material, Country, REM
+--FROM Ware
+--WHERE (ID IS 1015 OR ID IS 1041 OR ID IS 1032 OR ID IS 1010) 
+--AND Material IS 'нейлон' AND Country IS 'Китай'
+
