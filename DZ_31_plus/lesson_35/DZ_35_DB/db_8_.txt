@@ -1,0 +1,110 @@
+1.	Выведите перечень сумм заказов продавца Rifkin.
+
+SELECT o.amt
+FROM Salespeople s, Orders o
+WHERE s.snum=o.snum AND s.sname='Rifkin';
+
+SELECT amt
+FROM Orders
+WHERE snum = 
+    (SELECT snum
+    FROM Salespeople 
+    WHERE sname='Rifkin');
+
+2.	Определите  комиссионные всех продавцов, обслуживающих заказчиков в Риме
+
+SELECT s.com
+FROM Salespeople s, Customers c
+WHERE s.snum=c.snum AND c.city='Rome';
+
+SELECT com
+FROM Salespeople
+WHERE snum IN  --=
+    (SELECT snum
+    FROM Customers
+    WHERE city='Rome');
+
+3.	Напишите запрос, который определит заказчиков имеющих рейтинг ниже среднего.
+
+SELECT cname, rating
+FROM Customers
+WHERE rating <
+    (SELECT AVG(rating)
+    FROM Customers)
+
+4.	Определите города проживания заказчиков с наименьшим рейтингом.
+
+SELECT city, MIN(rating)
+FROM Customers
+GROUP BY city
+HAVING MIN(rating) IN
+    (SELECT MIN(rating)
+    FROM Customers)
+
+5.	Напишите запрос, который выводил бы заказы клиента Liu
+
+Обычный запрос:
+SELECT o.onum, c.cname
+FROM Orders AS o, Customers AS c
+WHERE o.cnum=c.cnum AND c.cname='Liu';
+
+Запрос с подзапросом:
+SELECT onum
+FROM Orders
+WHERE cnum IN
+    (SELECT cnum
+    FROM Customers
+    WHERE cname='Liu')
+    
+
+6.	Определите наибольшие комиссионные продавца для Рима.
+
+Обычный запрос:
+SELECT MAX(com) AS Наибольшие_комиссионные_продавца_для_Рима
+FROM Salespeople AS s, Customers AS c
+WHERE s.snum=c.snum AND c.city='Rome';
+
+Альтернатива обычного запроса:
+--SELECT MAX(com) AS Наибольшие_комиссионные_продавца_для_Рима
+--FROM Salespeople AS s, Customers AS c
+--WHERE s.snum IS c.snum AND c.city IS 'Rome';
+
+Запрос с подзапросом:
+SELECT MAX(com) AS Наибольшие_комиссионные_продавца_для_Рима
+FROM Salespeople
+WHERE snum IN
+    (SELECT snum
+    FROM Customers
+    WHERE city='Rome');
+
+7.	Напишите запрос который выведет всех клиентов обслуживаемых продавцом Motiка.
+
+Обычный запрос:
+SELECT c.cname
+FROM Customers c, Salespeople AS s
+WHERE c.snum=s.snum AND s.sname='Motika'
+
+Запрос с подзапросом:
+SELECT cname
+FROM Customers
+WHERE snum IN
+    (SELECT snum
+    FROM Salespeople
+    WHERE sname='Motika');
+
+
+8.	Напишите запрос, который выведет максимальный рейтинг заказчика для продавцов имеющих комиссионные больше 0,11%.
+
+Обычный запрос:
+SELECT MAX(rating), cname
+FROM Customers c, Salespeople s
+WHERE c.snum=s.snum AND s.com > 0.11;
+
+Запрос с подзапросом:
+SELECT MAX(rating), cname
+FROM Customers
+WHERE snum IN
+    (SELECT snum
+    FROM Salespeople
+    WHERE com > 0.11);
+    
