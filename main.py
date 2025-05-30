@@ -2910,7 +2910,7 @@ import json
 
 # Регулярные выражения (Урок 16)
 # Для начала импортируем модуль "re" - сокращение от Regular Express
-import re
+# import re
 
 # s = "Я ищу совпадения в 2025 году. И я их найду в 2 счёта. 6789"  # Строка
 
@@ -6411,7 +6411,7 @@ import re
 #             """)
 
 
-import sqlite3
+# import sqlite3
 
 # with sqlite3.connect("db_3.db") as con:
 #     cur = con.cursor()
@@ -6449,6 +6449,7 @@ import sqlite3
 # lESSON 36
 
 # import sqlite3
+
 #
 # list_cars = [
 #     ('BMW', 54000),
