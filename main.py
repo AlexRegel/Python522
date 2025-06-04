@@ -2458,6 +2458,7 @@
 # Lesson 14
 """
 import json
+
 # import json
 # import pickle
 # lst = [input("-> ") for i in range(5)]
@@ -6490,3 +6491,14 @@ import json
 # cur.execute("INSERT INTO cars VALUES(3, 'Mersedes', 57000)")
 # cur.execute("INSERT INTO cars VALUES(4, 'Bently', 35000)")
 # cur.execute("INSERT INTO cars VALUES(5, 'Audi', 52000)")
+
+# a = int("qwerty")
+# print(a)  # ValueError: invalid literal for int() with base 10: 'qwerty'
+
+# old_dict = {'a': 10, 'b': 10}
+# new_dict = {}
+#
+# for i, j in old_dict.items():
+#     new_dict[j] = i
+#
+# print(new_dict)
