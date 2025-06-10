@@ -1,0 +1,25 @@
+ul{
+    /* color: green; */
+    /* list-style-type: circle;
+    list-style-image: url(icon.png);
+    list-style-position: inside; */
+    /* text-align: center; */
+    /* list-style: circle inside url(icon.png); */
+    
+}
+
+ol {
+    /* list-style-type: lower-greek;
+    list-style-image: none; */
+    
+}
+li {
+    /* list-style: circle inside url(s.gif); */
+}
+
+li > ul {
+    list-style: url(s.gif);
+}
+ol {
+    list-style-image: none;
+}
