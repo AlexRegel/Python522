@@ -1,1 +1,10 @@
 https://validator.w3.org/
+
+
+html-справочник:
+https://htmlbook.ru/samhtml/tegi/parnye-tegi
+https://htmlbook.ru/css
+
+
+Шрифты:
+https://fonts.google.com/specimen/Roboto
