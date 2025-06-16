@@ -1,0 +1,58 @@
+li > ul {
+    list-style-type: lower-alpha;
+    color: black;
+}
+/* ol {
+    list-style-image: none;
+} */
+
+ul{
+    color: red;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 600;
+    /* font-style: normal; */
+    
+}
+
+    .yellow {
+        color: orange;
+    }
+    .green {
+        color: green;
+    }
+    .blue {
+        color: blue;
+    }
+    .fiolet {
+        color: rgb(112, 9, 152);
+    }
+
+/* .red{color: red;} */
+/* list-style: url(s.gif); */
+.arrow {
+    list-style-type: upper-roman;
+}
+
+/* .lisen {
+    list-style-type: lower-alpha;
+} */
+
+.cic {
+    list-style-image: url(orange_marker.png);
+}
+
+.galky_green {
+    list-style-image: url(green_marker.png);
+}
+
+.rir {
+    list-style-image: url(red_marker.png);
+}
+
+.galky_blue {
+    list-style-image: url(blue_marker.png);
+}
+
+.black_marker {
+    list-style-image: url(black_marker.png);
+}
