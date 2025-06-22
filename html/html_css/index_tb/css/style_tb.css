@@ -1,0 +1,31 @@
+
+body {
+    background-image: url(../img/pattern.png);
+}
+
+tr {
+    background-image: url(../img/tablebg.jpg);
+}
+
+th {
+    height: 70px;
+    border: 2px solid silver;
+}
+
+table {
+    border: 2px solid silver;
+    border-collapse: collapse;
+    margin: 100px auto;
+    /* min-width: 900px; */
+    box-shadow: 0 0 2px 2px silver;
+}
+
+td {
+    border: 2px solid silver;
+    padding: 20px;
+    background-color: white;
+}
+
+ .silver {
+    background-color: silver;
+ }
