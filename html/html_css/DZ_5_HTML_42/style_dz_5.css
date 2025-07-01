@@ -1,3 +1,245 @@
+body {
+    background-color: rgb(255, 255, 255);
+}
 
+.shapka__right {
+    border: none
+}
 
+.Lan {
+    position: absolute;
+    top: 30px;
+    right: 30px;    
+}
 
+.div__Language {
+    position: absolute;
+    margin-top: 5px;
+    padding-right: 5px;
+    margin-right: 0px;
+    top: 25px;
+    right: 115px;
+}
+
+.picture {
+    position: absolute;
+    top: 15px;
+    left: 35px;  
+}
+
+table {
+    position: static;
+    width: 100%;
+    margin: 0px auto;
+    height: auto;
+    border-collapse: collapse;
+    border: none;
+    min-width: 600px;
+}
+
+th {
+    height: 70px;
+    /* border: 2px solid silver; */
+    border: none;
+    /* line-height: 50px; */
+    table-layout: fixed;
+}
+
+td {
+    /* border: 1px solid black; */
+    padding: 0px 5px;
+    text-align: left;
+    min-width: 150px;
+    max-width: 200px;
+}
+
+/* .fixed-height-cell {
+    height: 10px;
+    line-height: 10px;
+} */
+
+.shapka__zaglavie {
+    padding: 0px 0px;
+    margin-top: 0px;
+}
+
+.shapka__kommentariy {
+    padding: 10px 0px 20px;
+    height: 50px;
+    font-family: Verdana, Arial, Helvetica, sans-serif;
+    font-size: 14px;
+    font-weight: normal
+}
+
+.content__table {
+    border: 3px solid rgb(178, 188, 221);
+}
+
+/* td.div__start {
+    position: absolute;
+    top: 5px;
+    left: 50px;
+    /* margin: 10px 20px 50px 10px; */
+/* } */
+
+/* .div__start {
+    position: static;
+    padding: 80px auto 10px 10px;
+} */
+
+.nachalo__rabot {
+    height: 45px;
+}
+
+.shapka__table.tr.td {
+    border: none;
+}
+
+/* a:link {
+    color: blueviolet;
+} */
+
+a:visited {
+    color: blue;
+}
+
+a:hover {
+    color: green;
+}
+
+p.align-text {
+    position: absolute;
+    text-align: start;
+}
+
+.name__enter {
+    position: static;
+    padding: 0px 8px 38px 5px;
+    height: 10px;
+    /* padding-bottom: 40px; */
+}
+
+.repassword {
+    position: static;
+    padding: 5px 8px 25px 5px;
+}
+
+/* .parol {
+    padding: 5px;
+    height: 20px;
+} */
+
+.checkbox {
+    font-family: Verdana, Arial, Helvetica, sans-serif;
+    font-size: 13px;
+    font-weight: normal;
+    color: black;
+}
+
+/* 15px 5px */
+.secret {
+    position: static;
+    padding: 0px 0px;
+}
+.mar__bott{
+    margin: 0px 5px;
+    /* margin-bottom: 5px; */
+}
+
+/* .div__secret-vop {
+    font-family: Verdana, Arial, Helvetica, sans-serif;
+    font-size: 14px;
+    font-weight: normal
+} */
+
+.sel__sekret {
+    position: static;
+    /* padding: 5px; */
+    /* margin-bottom: 5px; */
+}
+
+/* .if__no-memory {
+    position: static;
+    margin-top: 0px;
+    padding: 0px 0px;
+} */
+
+.if__no-memory_0 {
+    /* position: static; */
+    margin-top: 0px;
+    padding: 0px 5px;
+}
+
+.if__no_E-mail {
+    padding-left: 5px;
+    padding-top: 0px;
+    position: static;
+    height: 8px;
+}
+
+/* .E-mail {
+    padding-left: 3px;
+} */
+
+.mar__mestop {
+    position: static;
+    padding: 0px 0px;
+}
+
+.mestopologenie {
+    margin: 0px 5px;
+}
+
+.select__mestopol {
+    position: static;
+    padding: 0px 450px 0px 0px;
+    margin: 0px 0px;
+}
+
+.style__font {
+    font-family: Verdana, Arial, Helvetica, sans-serif; 
+    font-size: 13px;
+    font-weight: normal;
+}
+
+.zazor {
+    padding-left: 5px;
+}
+
+/* .img__proverka {
+    margin-bottom: 0px;
+    padding-top: 15px;
+} */
+
+div.versiya__pechati{
+    text-align: right;
+}
+
+.top__uslovie {
+    position: static;
+    /* text-align: end; */
+    text-align: left;
+    vertical-align: text-top
+}
+
+.button__license-accept {
+    position: static;
+    padding: 0px 50px 20px;
+    margin: 20px 0px 20px;
+}
+
+.layer {
+    text-align: justify;
+    width: 650px;
+    height: 120px;
+    padding: 5px;
+    padding: 0px 5px 0px 5px;
+    border: 2px solid silver;
+    margin:  0px 5px 0px 0px;
+    overflow: auto;
+    font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 10px; font-weight: normal
+}
+
+/* .zazor__vnutr {
+
+} */

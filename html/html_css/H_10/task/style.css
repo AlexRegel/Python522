@@ -21,6 +21,7 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    flex-wrap: wrap;
 }
 
 .top_block--left {
@@ -350,4 +351,52 @@ button {
     border: none;
     padding: 15px 40px;
     cursor: pointer;
+}
+
+@media(max-width: 1050px){
+    .wrap{
+        padding: 0 40px;
+        box-sizing: border-box;
+    }
+
+    .choose__block, .team__block {
+        justify-content: space-evenly;
+    }
+}
+
+@media(max-width: 760px) {
+    .choose__element, .team__element {
+        flex-basis: 100%;
+    }
+
+    .top h1 {
+        font-size: 54px;
+    }
+
+    br{
+        display: none;
+    }
+}
+
+@media(max-width: 714px) {
+    input, select {
+        flex-basis: 100%;
+        margin-right: 0;
+    }
+
+    textarea {
+        margin-right: 0;
+    }
+
+    button, .cont button {
+        width: 100%;
+    }
+
+}
+
+@media(max-width: 454px) {
+    .top__btn a{
+        display: block;
+        margin: 25px 40px;
+    }
 }
