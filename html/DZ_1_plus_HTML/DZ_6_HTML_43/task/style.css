@@ -1,0 +1,127 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+body {
+    font-family: "Montserrat", sans-serif;
+    margin: 0;
+}
+
+.wrap {
+    max-width: 1050px;
+    min-width: 414px;
+    margin: 0 auto;
+}
+
+/* top */
+.top {
+    background: #F3F3F3;
+    padding-bottom: 120px;
+}
+
+.top__block {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.top_block--left {
+    margin: 0;
+    color: rgb(37, 43, 66);
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 32px;
+    letter-spacing: 0.1px;
+    margin: 36px 0;
+}
+
+.top_block--right {
+    margin: 0;
+    display: flex;
+    list-style: none;
+}
+
+.top_block--right li {
+    margin-left: 21px;
+}
+
+.top_block--right a {
+    color: rgb(115, 115, 115);
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 24px;
+    letter-spacing: 0.2px;
+    text-decoration: none;
+}
+
+.center__h1 {
+    position: static;
+    width: 727px;
+    height: 160px;
+    padding: 80px 161px 0px;
+    color: rgb(37, 43, 66);
+    font-family: Montserrat;
+    font-size: 58px;
+    font-weight: 800;
+    line-height: 80px;
+    letter-spacing: 0.2px;
+    text-align: center;
+}
+
+.center__h4 {
+    position: static;
+    width: 540px;
+    height: 60px;
+    gap: 80;
+    padding: 80px 255px 0px;
+    color: rgb(115, 115, 115);
+    font-family: Montserrat;
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 30px;
+    letter-spacing: 0.2px;
+    text-align: center;
+}
+
+.bottom__all {
+    position: static;
+    width: 354px;
+    height: 48px;
+    /* Автолейаут */
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 10;
+    padding: 80px 348px 80px;
+}
+
+.button__left {
+    position: static;
+    width: 187px;
+    height: 48px;
+    border-radius: 37px;
+    background-color: rgb(255, 166, 43);
+    /* Шрифт */
+    color: rgb(255, 255, 255);
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 28px;
+    letter-spacing: 0.2px;
+    text-align: center;
+    border-style: hidden;
+}
+
+.bottom__right {
+    position: static;
+    width: 157px;
+    height: 48px;
+    border-style: solid;
+    border-color: #00A0C1;
+    border-radius: 37px;
+    /* btn-text */
+    color: rgb(0, 160, 193);
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 28px;
+    letter-spacing: 0.2px;
+    text-align: center;
+}
