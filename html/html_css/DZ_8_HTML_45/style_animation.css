@@ -1,0 +1,82 @@
+.animation_ball {
+    border: 1px solid brown;
+    background: orange;
+    height: 100px;
+    width: 100px;
+    border-radius: 50%;
+    animation: anim_ball 5s infinite;
+}
+
+@keyframes anim_ball {
+    /* from */
+    0% {
+        margin-left: 3px;
+        margin-top: 3px;
+    }
+    
+    35% {
+        margin-left: 300px;
+        margin-top: 300px;
+        height: 80px;
+    }
+
+    45% {
+        margin-left: 400px;
+        margin-top: 50px;
+        height: 100px;
+    }
+
+    55% {
+        margin-left: 500px;
+        margin-top: 300px;
+        height: 85px;
+    }
+
+    65% {
+        margin-left: 600px;
+        margin-top: 100px;
+        height: 100px;
+    }
+
+    72% {
+        margin-left: 650px;
+        margin-top: 300px;
+        height: 92px;
+    }
+
+    78% {
+        margin-left: 670px;
+        margin-top: 150px;
+        height: 100px;
+    }
+
+    82% {
+        margin-left: 685px;
+        margin-top: 300px;
+        height: 92px;
+    }
+
+    88% {
+        margin-left: 690px;
+        margin-top: 200px;
+        height: 100px;
+    }
+
+    93% {
+        margin-left: 692px;
+        margin-top: 300px;
+        height: 98px;
+    }
+
+    98% {
+        margin-left: 693px;
+        margin-top: 243px;
+        height: 100px;
+    }
+
+    100% {
+        margin-left: 693px;
+        margin-top: 300px;
+        height: 100px;
+    }
+}
